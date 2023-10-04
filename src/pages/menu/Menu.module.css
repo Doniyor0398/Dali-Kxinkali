@@ -1,0 +1,41 @@
+/* !===== Menu-Pages ===== */
+
+.navLink {
+  margin: 25px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.linkMenu {
+  color: #000;
+  font-family: "Lato";
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 8px;
+  border: 3px solid #f69049;
+  padding: 12px 75px;
+  margin: 0px 20px 20px;
+}
+.linkMenu:focus {
+  background: #f69049;
+}
+.SalatBlockRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.BlockCard {
+  border-radius: 210.5px 210.5px 20px 20px;
+  width: 421px;
+  background: #eaeaea;
+  margin: 120px 87px;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}

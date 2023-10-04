@@ -1,0 +1,65 @@
+.change {
+  background-color: black;
+}
+
+/*! style Select  */
+select,
+select:focus,
+select:active,
+option,
+option:focus,
+option:active {
+  outline: none;
+}
+select {
+  position: relative;
+}
+select:after {
+  width: 14px;
+  height: 8px;
+  position: absolute;
+  background: black;
+}
+.SelectReserveSelectRow {
+  display: flex;
+  background: none;
+}
+.ReserveOption option {
+  font-size: calc(18px + 18 * ((100vw - 320px) / (1920 - 320)));
+}
+.ReserveOption {
+  border: none;
+  background: none;
+  font-size: 23px;
+  color: #fff;
+  background-image: black;
+  font-family: "Lato";
+  font-size: 33.186px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.RowHull {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.backgroundHull img {
+  box-shadow: 70px 0 110px 0px black;
+  margin-top: -110px;
+  width: 100%;
+}
+
+@media (max-width: 1400px) {
+  .RowHull {
+    flex-wrap: wrap-reverse;
+    align-items: center;
+  }
+  .backgroundHull img {
+    margin: 0 0 20px 0;
+  }
+  .backgroundBodyReserve {
+    background-size: 104% 110% !important;
+  }
+}

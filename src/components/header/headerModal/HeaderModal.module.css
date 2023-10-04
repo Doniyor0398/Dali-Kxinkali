@@ -1,0 +1,35 @@
+.toggleNavBar {
+  background: #fff;
+
+  border-right: 3px solid #f69049;
+  border-bottom: 3px solid #f69049;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: block;
+  padding: 25px 25px 25px;
+  position: absolute;
+  left: -16px;
+  top: 100%;
+  min-width: 270px;
+}
+.toggleNavBar a {
+  margin: 0 0 15px 0;
+  color: #000;
+  font-family: "Open Sans";
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: calc(15px + 5 * ((100vw - 320px) / (1920 - 320)));
+  display: flex;
+}
+.toggleNavBar a:focus {
+  color: #f69049;
+}
+.CloseIcon {
+  position: absolute;
+  right: 20px;
+}
+.NavItemBox {
+  margin: 30px 0 0 0;
+}
