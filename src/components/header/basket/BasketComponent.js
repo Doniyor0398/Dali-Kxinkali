@@ -37,11 +37,13 @@ const BasketComponent = ({ closeModal, products, basketItems }) => {
             <img src={Close} alt="" />
           </span>
           <div className={styles.modalBasketRow}>
+            {/* <div className={styles.modalBasketTextRow}> */}
             <div className={styles.modalBasketTextRow}>
-              <img  className={styles.basketIcon} src={Basket} alt="" />
+              <img className={styles.basketIcon} src={Basket} alt="" />
               <p>Корзина</p>
-              <img className={styles.imgModalDelete} src={Delete} alt="" />
             </div>
+            <img className={styles.imgModalDelete} src={Delete} alt="" />
+            {/* </div> */}
           </div>
           <span
             style={{

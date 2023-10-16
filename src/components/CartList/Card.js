@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from "react";
+import axios from "axios";
 
 const Card = (elem, styles) => {
   async function addToCart() {
@@ -27,7 +27,7 @@ const Card = (elem, styles) => {
           <span className="weight">{elem.weight}</span>
         </div>
         <div className="btns">
-          <p className="price">{elem.price}</p>
+          <p className="price">{elem.price}.руб</p>
           {/* <Link className="btn" to="/">
             + В корзину
           </Link> */}
@@ -37,4 +37,4 @@ const Card = (elem, styles) => {
   );
 };
 
-export default Card
+export default Card;

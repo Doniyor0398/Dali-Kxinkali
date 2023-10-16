@@ -28,6 +28,7 @@ const LogReg = ({
   style,
   open,
   Button,
+  phone,
 }) => {
   return (
     <>
@@ -178,6 +179,7 @@ const LogReg = ({
                     paddingLeft: "10px",
                   }}
                   fullWidth
+                  type="email"
                   placeholder="Почта"
                   sx={{ mt: 2, "& fieldset": { border: "none" } }}
                   onChange={(e) => setEmail(e.target.value)}
@@ -201,15 +203,10 @@ const LogReg = ({
                   definitions={{
                     "#": /[1-9]/,
                   }}
-                  style={{
-                    background: "#fff",
-                    borderRadius: "50px",
-                    paddingLeft: "10px",
-                    width: "100%",
-                    padding: "20px 14px",
-                    marginTop: "16px",
-                  }}
-                  placeholder="Телефон"
+                  value={phone}
+                  className={styles.IMaskInputReg}
+                  // placeholder="Телефон"
+
                   sx={{ mt: 2, "& fieldset": { border: "none" } }}
                   onChange={(e) => setPhone(e.target.value)}
                 />
@@ -262,6 +259,7 @@ const LogReg = ({
                     paddingLeft: "10px",
                   }}
                   fullWidth
+                  type="text"
                   placeholder="Фамилия"
                   sx={{ mt: 2, "& fieldset": { border: "none" } }}
                   onChange={(e) => setLastName(e.target.value)}

@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import "../../assets/general-styles/styles.css";
 import styles from "./Menu.module.css";
 import Salat from "./salat/Salat";
-// import Snacks from "./snacks/Snacks";
 import Beverage from "./beverages/Beverages";
+import Snacks from "./snacks/Snacks";
+import Soups from "./soups/Soups";
+import Garnish from "./garnish/Garnish";
+import Bekery from "./bakery/Bakery";
+import HotDishes from "./hotDishes/HotDishes";
+import DishesOnTheGrill from "./dishesOnTheGrill/DishesOnTheGrill";
+import Sauces from "./sauces/Sauces";
+import Bread from "./bread/Bread";
+import Dessert from "./dessert/Dessert";
 
 const Pages = [
   { name: "Салаты", url: "" },
@@ -24,23 +32,23 @@ const renderSwitch = (param) => {
     case "Салаты":
       return <Salat />;
     case "Закуски":
-      return <Salat />;
+      return <Snacks />;
     case "Супы":
-      return <Salat />;
+      return <Soups />;
     case "Гарниры":
-      return <Salat />;
+      return <Garnish />;
     case "Выпечка":
-      return <Salat />;
+      return <Bekery />;
     case "Горячие блюда":
-      return <Salat />;
+      return <HotDishes />;
     case "Блюда на мангале":
-      return <Salat />;
+      return <DishesOnTheGrill />;
     case "Соусы":
-      return <Salat />;
+      return <Sauces />;
     case "Хлеб":
-      return <Salat />;
+      return <Bread />;
     case "Десерты":
-      return <Salat />;
+      return <Dessert />;
     case "Напитки":
       return <Beverage />;
 

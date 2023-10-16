@@ -44,10 +44,23 @@
   justify-content: center;
   padding-bottom: 300px;
 }
-
+@media (max-width: 375px) {
+  .OmarBtn {
+    padding: 0 0 70px 0;
+  }
+  .PagesOmar {
+    border-radius: 10px;
+  }
+}
+.buttonOmar {
+  padding: 25px 85px;
+}
 @media screen and (max-width: 423px) {
   .BlockOmarTitles {
     padding-top: 90px;
+  }
+  .buttonOmar {
+    padding: 15px 65px;
   }
   .OmarTitle {
     letter-spacing: 8.871px;

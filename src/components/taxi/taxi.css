@@ -132,13 +132,6 @@
   position: relative;
 }
 
-/* .taxi__form-select:after {
-position: absolute;
-content: url(../../assets/img/Vector.png);
-width: 16px;
-height: 21px;
-} */
-
 .taxi__form-select-arrow {
   vertical-align: bottom;
 }
@@ -177,6 +170,11 @@ height: 21px;
 
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
   font-size: calc(25px + 29 * ((100vw - 320px) / (1920 - 320)));
+}
+@media (min-width: 0px) {
+  .css-m3oe8z-MuiGrid-root {
+    margin-left: 0 !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -225,13 +223,6 @@ height: 21px;
     width: 100%;
     margin-bottom: 40px;
   }
-
-  /* .taxi__order-button {
-  display: inline-flex;
-  max-width: 300px;
-  padding: 18px 40px;
-  font-size: 1.2rem;
-} */
 }
 .form__data__center {
   display: flex;

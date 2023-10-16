@@ -7,18 +7,24 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { TimePicker } from "@mui/x-date-pickers";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { Button, Container, TextField } from "@mui/material";
+import Zal from "./zal/Zal";
+import Veranda from "./veranda/Veranda";
 
 const MainReserve = () => {
-  // hall veranda date NumberGuests Optonal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showTableNumber, setShowTableNumber] = useState(false);
 
-  // const [hall, setHull] = useState("");
-  // const [veranda, setVeranda] = useState("");
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guestsCount, setGuestsCount] = useState(0);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [optional, setOptional] = useState("");
+  const [place, setPlace] = useState("");
 
   const handler = {
     name: (e) => {
@@ -40,51 +46,71 @@ const MainReserve = () => {
     guestsCount: (e) => {
       setGuestsCount(e.target.value);
     },
+    place: (e) => {
+      setPlace(e.target.value);
+
+      setShowTableNumber(
+        e.target.value === "Зал" || e.target.value === "Веранда"
+      );
+
+      if (e.target.value === "Зал") {
+        setIsModalOpen(true);
+      } else if (e.target.value === "Веранда") {
+        setIsModalOpen(true);
+      } else {
+        setIsModalOpen(false);
+      }
+    },
+    placeZal: (num) => {
+      setPlace(num);
+    },
+    placeVeranda: (num) => {
+      setPlace(num);
+    },
   };
-
-  useEffect(() => {
-    console.log(guestsCount);
-  });
-
-  const guestsCountArr = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
     <>
       <div id="table-reserve">
-        <div
-          className={styles.backgroundBodyReserve}
-          style={{
-            background: "#F69049",
-            height: "100%",
-            paddingTop: "85px",
-            marginTop: "320px",
-          }}
-        >
+        <div className={styles.backgroundBodyReserve}>
           <h3 className="title__pages_all">Резерв стола</h3>
 
-          <Container
-            // style={{
-            //   display: "flex",
-            //   justifyContent: "center",
-            //   alignItems: "center",
-            // }}
-            className={styles.ContainerCenter}
-          >
+          <Container className={styles.ContainerCenter}>
             <div className="container__reserve reserve">
               {/* Зал__и__веранда */}
 
               <div className="reserve__title__subtitle">
                 <div className={styles.SelectReserveSelectRow}>
                   <div className="reserve__subtitle__left">Зал / Веранда</div>
-                  <select aria-invalid="false" className={styles.ReserveOption}>
+                  <select
+                    aria-invalid="false"
+                    className={styles.ReserveOption}
+                    onChange={handler.place}
+                    onClick={handler.place}
+                  >
                     <option disabled selected>
                       Выбрать
                     </option>
-                    <option>Зал</option>
-                    <option>Веранда</option>
+                    <option value="Зал">Зал</option>
+                    <option value="Веранда">Веранда</option>
                   </select>
+                  {showTableNumber && (
+                    <span className={styles.spanReserve}>
+                      {" Стол №:"} {place.indexOf("Table") && `${place}`}
+                    </span>
+                  )}
                 </div>
               </div>
+              {isModalOpen ? (
+                place === "Зал" ? (
+                  <Zal closeModal={closeModal} handler={handler.placeZal} />
+                ) : (
+                  <Veranda
+                    closeModal={closeModal}
+                    handler={handler.placeVeranda}
+                  />
+                )
+              ) : null}
 
               {/* Дата__и__время */}
               <div className="reserve__title__subtitle">
@@ -148,6 +174,7 @@ const MainReserve = () => {
                       },
                     },
                   }}
+                  required
                   autoFocus
                   margin="dense"
                   id="date"
@@ -173,6 +200,7 @@ const MainReserve = () => {
                       },
                     },
                   }}
+                  required
                   autoFocus
                   margin="dense"
                   id="date"
@@ -187,25 +215,24 @@ const MainReserve = () => {
               {/* Число гостей   */}
               <div className="reserve__title__subtitle">
                 <div className={styles.SelectReserveSelectRow}>
-                  <div className="reserve__subtitle__left">Число гостей </div>
-                  <select
-                    aria-invalid="false"
-                    className={styles.ReserveOption}
-                    onChange={handler.guestsCount}
-                  >
-                    <option disabled selected>
-                      1 - 8
-                    </option>
-                    {guestsCountArr.map((el) => {
-                      return <option value={el}>{`${el}`}</option>;
-                    })}
-                  </select>
+                  <div className="reserve__subtitle__left">Кол-во гостей </div>
+                  <form action="#" method="post">
+                    <input
+                      className={styles.ReserveOption}
+                      onChange={handler.guestsCount}
+                      type="number"
+                      // placeholder="1 - 50"
+                      required
+                      min="1"
+                      max="50"
+                    />
+                  </form>
                 </div>
               </div>
 
               {/* По желанию  */}
               <div className="reserve__title__subtitle">
-                <div className="reserve__subtitle__left">По желанию</div>
+                <div className="reserve__subtitle__left">Комментарий</div>
                 <TextField
                   InputProps={{
                     sx: {
@@ -234,7 +261,6 @@ const MainReserve = () => {
                   style={{
                     borderRadius: "20px",
                   }}
-                  // onClick={handleOpen}
                 >
                   Забронировать
                 </Button>

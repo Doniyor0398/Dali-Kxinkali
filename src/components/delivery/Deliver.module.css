@@ -4,9 +4,7 @@
 .hover:hover {
   transform: scale(1.2);
 }
-.css-xpwe3e-MuiGrid-root {
-  left: 80px;
-}
+
 @media screen and (max-width: 1200px) {
   .carHover,
   .logoDeliver {

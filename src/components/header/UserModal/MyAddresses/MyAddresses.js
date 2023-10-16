@@ -38,7 +38,7 @@ function MyAddresses({ setPersonalModal }) {
       </div>
       <div className={styles.editAddress} onClick={toggleEditFormVisibility}>
         <div className={styles.textAddress}>
-          ул. Ленина, 36А, Орехово-Зуево, Московская обл.
+          {/*! поля для добавление адреса */}
         </div>
         <img src={Edit} alt="" />
       </div>

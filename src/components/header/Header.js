@@ -26,6 +26,7 @@ import HeaderAuth from "./headerAuth/HeaderAuth";
 import BasketComponent from "./basket/BasketComponent";
 import axios from "axios";
 import HeaderModal from "./headerModal/HeaderModal";
+import PagesDrop from "../../pages/menu/Menu";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   // !Korzina border
@@ -52,23 +53,20 @@ const style = {
 };
 
 const pages = [
-  { name: "Главная", url: "/" },
+  { name: "Главная", url: "/#menuHeader" },
   { name: "Меню ", url: "/menu" },
-  { name: "Резерв стола", url: "#table-reserve" },
-  { name: "Банкеты", url: "#hall" },
-  { name: "Доставка", url: "#delivery" },
-  { name: "КАЛЬЯН", url: "#kalyan" },
-  { name: "Такси", url: "#taxi" },
-  { name: "Контакты", url: "#contacts" },
+  { name: "Резерв стола", url: "/#table-reserve" },
+  { name: "Банкеты", url: "/#hall" },
+  { name: "Доставка", url: "/#delivery" },
+  { name: "КАЛЬЯН", url: "/#kalyan" },
+  { name: "Такси", url: "/#taxi" },
+  { name: "Контакты", url: "/#contacts" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function Header() {
+function Header({ Pages }) {
   function handleClickScroll(url) {
     if (typeof url === "string") {
-      // Проверяем, что url - это строка
-      console.log(url.slice(1));
-
       const element = document.getElementById(url.slice(1));
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
@@ -77,7 +75,7 @@ function Header() {
   }
 
   // Modal
-  // Состояние для отображения/скрытия модального окна
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [headerModal, setHeaderModal] = useState(false);
 
@@ -86,20 +84,14 @@ function Header() {
       closeModal();
     }
   };
-  // Функция для открытия модального окна
+
   const openModal = () => {
     setIsModalOpen(true);
   };
 
-  // Функция для закрытия модального окна
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  // const handleModalClick = (e) => {
-  //   if (e.target === e.currentTarget) {
-  //     closeModal();
-  //   }
-  // };
 
   // end modal
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -156,12 +148,14 @@ function Header() {
     <>
       {/* !Logo header */}
       <AppBar
+        id="menuHeader"
         style={{
           background: "black",
           position: "static",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          maxHeight: "100px",
         }}
       >
         <Box>
@@ -187,99 +181,83 @@ function Header() {
       >
         <Container Container maxWidth="xl">
           {/* menu burger */}
-          <Toolbar disableGutters>
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleCklick}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
+          <div className={styles.NavBarCenter}>
+            <Toolbar disableGutters>
+              <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleCklick}
+                  color="inherit"
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Box>
 
-              {/* <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
+              <Box
+                ml={3}
                 sx={{
-                  display: { xs: "block", md: "none" },
+                  flexGrow: 1,
+                  gap: "2vw",
+                  display: {
+                    xs: "none",
+                    md: "flex",
+                    justifyContent: "center",
+                  },
                 }}
+                style={{ padding: "50px 0" }}
               >
                 {pages.map((page) => (
                   <NavLink
                     to={page.url}
+                    className={({ isActive }) => (isActive ? "active" : "")}
                     key={page.name}
-                    onClick={() => handleCloseNavMenu(page.url)}
-                  ></NavLink>
+                    onClick={() => handleClickScroll(page.url)}
+                  >
+                    {page.name}
+                  </NavLink>
                 ))}
-              </Menu> */}
-            </Box>
-            <Box
-              background="red"
-              ml={3}
-              sx={{
-                flexGrow: 1,
-                gap: "2vw",
-                display: { xs: "none", md: "flex", justifyContent: "center" },
-              }}
-              style={{ padding: "50px 0" }}
-            >
-              {pages.map((page) => (
-                <NavLink
-                  to={page.url}
-                  className={({ isActive }) => (isActive ? "active" : "")}
-                  key={page.name}
-                  onClick={() => handleClickScroll(page.url)}
-                >
-                  {page.name}
-                </NavLink>
-              ))}
-            </Box>
-            {headerModal ? (
-              <HeaderModal pages={pages} handleCklick={handleCklick} />
-            ) : (
-              ""
-            )}
+              </Box>
+              {headerModal ? (
+                <HeaderModal
+                  Pages={Pages}
+                  pages={pages}
+                  handleCklick={handleCklick}
+                  handleClickScroll={handleClickScroll}
+                />
+              ) : (
+                ""
+              )}
 
-            {/* icon basket header */}
-            <button
-              to=""
-              style={{ border: "none" }}
-              className="cart"
-              onClick={openModal}
-            >
-              <img src={basket} alt="" />
-              <span
-                className={styles.bagQuantity}
-                style={{ position: "relative" }}
+              {/* icon basket header */}
+              <button
+                to=""
+                style={{ border: "none" }}
+                className="cart"
+                onClick={openModal}
               >
-                <span className="basket_sub">0</span>
-              </span>
-            </button>
+                <img src={basket} alt="" />
+                <span
+                  className={styles.bagQuantity}
+                  style={{ position: "relative" }}
+                >
+                  <span className="basket_sub">0</span>
+                </span>
+              </button>
 
-            <HeaderAuth />
+              <HeaderAuth />
 
-            {/* Модальное окно */}
-            {isModalOpen && (
-              <BasketComponent
-                closeModal={closeModal}
-                basketItems={basketItems}
-              />
-            )}
-          </Toolbar>
+              {/* Модальное окно */}
+              {isModalOpen && (
+                <BasketComponent
+                  closeModal={closeModal}
+                  basketItems={basketItems}
+                />
+              )}
+            </Toolbar>
+          </div>
         </Container>
       </AppBar>
     </>

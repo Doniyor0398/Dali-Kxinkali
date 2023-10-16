@@ -38,6 +38,11 @@ export const PersonalInfo = ({ setPersonalModal, userInfo }) => {
       id: 3,
       icon: Logout,
       title: "Выйти",
+      onClick: () => {
+        sessionStorage.setItem("auth_token", "");
+        localStorage.setItem("token", "");
+        window.location.reload()
+      },
     },
   ];
 

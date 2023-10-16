@@ -76,7 +76,7 @@ const HeaderAuth = () => {
   );
 
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState("+7");
   const [password, setPassword] = useState("");
   const [re_password, setRePassword] = useState("");
   const [first_name, setFirstName] = useState("");
@@ -85,7 +85,7 @@ const HeaderAuth = () => {
 
   const [succes, setSuccess] = useState(false);
   const handleSuccessClose = () => {
-    setSuccess(false);
+    setSuccess(true);
   };
 
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -196,7 +196,7 @@ const HeaderAuth = () => {
 
   // UserInfo Get Request
   useEffect(() => {
-    console.log(token, "token 203");
+    // console.log(token, "token 203");
     token &&
       userApi
         .get(token)
@@ -229,6 +229,7 @@ const HeaderAuth = () => {
         />
       ) : (
         <LogReg
+          phone={phone}
           open={open}
           handleOpen={handleOpen}
           handleClose={handleClose}

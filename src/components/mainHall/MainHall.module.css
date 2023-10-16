@@ -14,6 +14,9 @@ option:active {
 select {
   position: relative;
 }
+input::placeholder {
+  font-size: calc(15px + 11 * ((100vw - 320px) / (1920 - 320)));
+}
 select:after {
   width: 14px;
   height: 8px;
@@ -34,7 +37,6 @@ select:after {
   color: #fff;
   background-image: black;
   font-family: "Lato";
-  font-size: 33.186px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -51,15 +53,22 @@ select:after {
   width: 100%;
 }
 
-@media (max-width: 1400px) {
+.backgroundBodyReserve {
+  background: #f59049;
+  height: 100%;
+  padding-top: 85px;
+  margin-top: 320px;
+}
+@media (max-width: 1200px) {
   .RowHull {
     flex-wrap: wrap-reverse;
     align-items: center;
+    justify-content: center;
   }
   .backgroundHull img {
     margin: 0 0 20px 0;
   }
   .backgroundBodyReserve {
-    background-size: 104% 110% !important;
+    margin-top: 120px;
   }
 }

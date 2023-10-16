@@ -19,6 +19,22 @@ body {
   width: 100%;
   height: 100vh;
 }
+input {
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input::placeholder {
+  color: white;
+}
 ._container {
   max-width: 1920px;
   width: 100%;
@@ -27,6 +43,15 @@ body {
 
 .css-kcv5fp-MuiTypography-root {
   padding-left: 0 !important;
+}
+/*! background for LOG__REG */
+.MuiBackdrop-root.MuiModal-backdrop.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
+  background: url(../../assets/img/background__REG__LOG.png) no-repeat center;
+  background-size: cover;
+}
+/*  */
+h2#modal-modal-title {
+  font-size: calc(18px + 20 * ((100vw - 320px) / (1920 - 320))) !important;
 }
 /* !Title__pages__Общий__стиль */
 .title__pages_all {
@@ -63,7 +88,9 @@ body.slick-prev:before,
   z-index: 10;
   left: 0;
 }
-
+.CardContainer {
+  height: 100vh;
+}
 /* !Общий стиль - cardCarusel_card_Salats */
 .titleCard {
   color: #000;
@@ -86,6 +113,7 @@ body.slick-prev:before,
   margin: 30px 0 20px;
   text-transform: uppercase;
   padding: 0 15px;
+  text-align: left;
 }
 
 .title,
@@ -114,8 +142,7 @@ body.slick-prev:before,
 .price {
   color: #000;
   font-family: "Gilroy", sans-serif;
-  font-size: 32px;
-  font-size: calc(20px + 12 * ((100vw - 320px) / (1920 - 320)));
+  font-size: calc(16px + 12 * ((100vw - 320px) / (1920 - 320)));
   font-weight: 800;
   line-height: normal;
 }
@@ -208,6 +235,8 @@ body.slick-prev:before,
 
 .hoverBeverage {
   width: 100%;
+  min-width: 400px;
+  min-height: 400px;
 }
 .image.hoverBeverage:hover {
   transition: ease-out 0.5s;
@@ -215,9 +244,7 @@ body.slick-prev:before,
   transform: scale(1.03);
 }
 /* !Pages__Reserve */
-.reserve {
-  padding-left: 50px;
-}
+
 .reserve__title__subtitle {
   display: flex;
   flex-wrap: wrap;
@@ -285,14 +312,15 @@ body.slick-prev:before,
   margin: 0 0 120px 0;
   padding: 0 0 100px 0;
 }
-.css-12suj6j-MuiInputBase-root-MuiInput-root input {
+.css-12suj6j-MuiInputBase-root-MuiInput-root input::placeholder {
   font-size: calc(18px + 18 * ((100vw - 320px) / (1920 - 320)));
+  color: white;
 }
 .css-1gise53-MuiInputBase-root-MuiInput-root input {
   font-size: calc(18px + 18 * ((100vw - 320px) / (1920 - 320)));
 }
 label + .css-v4u5dn-MuiInputBase-root-MuiInput-root {
-  width: 218px !important;
+  min-width: 220px !important;
   margin-top: 23px !important;
 }
 .css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root {
@@ -310,6 +338,9 @@ label + .css-v4u5dn-MuiInputBase-root-MuiInput-root {
   text-transform: uppercase !important;
   padding: 23px 55px !important;
 }
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover {
+  background: #242322 !important;
+}
 .css-4jnixx-MuiStack-root {
   overflow: hidden !important;
 }
@@ -317,6 +348,9 @@ label + .css-v4u5dn-MuiInputBase-root-MuiInput-root {
 @media (max-width: 767px) {
   .css-12suj6j-MuiInputBase-root-MuiInput-root {
     max-width: 300px;
+  }
+  .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    padding: 18px 55px !important;
   }
 }
 @media (min-width: 1200px) {
@@ -384,6 +418,11 @@ label + .css-v4u5dn-MuiInputBase-root-MuiInput-root {
   font-size: 2.5rem !important;
   position: relative !important;
 }
+/* icon V резерв стола */
+button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-edgeEnd.MuiIconButton-sizeMedium.css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root {
+  width: 25px;
+  height: 25px;
+}
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiMenu-paper.MuiPopover-paper.MuiMenu-paper.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
   border-radius: 30px;
@@ -393,18 +432,42 @@ label + .css-v4u5dn-MuiInputBase-root-MuiInput-root {
   max-width: 765px !important;
   width: 100% !important;
   right: 100% !important;
+  top: 245px !important;
 }
-.MuiBackdrop-root.MuiBackdrop-invisible.MuiModal-backdrop.css-g3hgs1-MuiBackdrop-root-MuiModal-backdrop {
-  background: black;
-  opacity: 0.6 !important;
+/* Pages Delivery */
+.css-xpwe3e-MuiGrid-root {
+  top: 140px !important;
+  left: 60px !important;
+}
+.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-lg-6.css-f0xsrb-MuiGrid-root {
+  flex-wrap: wrap !important;
+}
+/* .slick-list {
+  padding: 0 100px 0 !important;
+} */
+@media (max-width: 767px) {
+  .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiMenu-paper.MuiPopover-paper.MuiMenu-paper.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+    left: 0 !important;
+    top: 200px !important;
+  }
+
+  .css-19r6kue-MuiContainer-root {
+    padding: 0 !important;
+  }
 }
 @media (max-width: 899px) {
   .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiMenu-paper.MuiPopover-paper.MuiMenu-paper.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
-    top: 200px !important;
+    top: 164px !important;
   }
 }
-@media (max-width: 375px) {
-  .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiMenu-paper.MuiPopover-paper.MuiMenu-paper.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
-    left: 0% !important;
+@media (min-width: 0px) {
+  .css-m3oe8z-MuiGrid-root {
+    width: calc(100% + -16px) !important;
+    margin-left: 0;
+  }
+}
+@media (max-width: 1199px) {
+  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+    padding: 6.5px 14px !important;
   }
 }

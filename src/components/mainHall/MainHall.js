@@ -40,9 +40,6 @@ const MainReserve = () => {
       setGuestsCount(e.target.value);
     },
   };
-  useEffect(() => {
-    console.log({ name, phone, optional, time, date, guestsCount });
-  });
 
   const guestsCountArr = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -54,23 +51,18 @@ const MainReserve = () => {
       <div id="table-reserve">
         <div
           className={styles.backgroundBodyReserve}
-          style={{
-            background: "#F69049",
-            height: "100%",
-            paddingTop: "85px",
-            marginTop: "320px",
-          }}
+         
         >
-          <h3 className="title__pages_all" id="#banket">
-            Банкетный зал
-          </h3>
-
+          <h3 className="title__pages_all">Банкетный зал</h3>
+          {/* id="#banket" */}
           <Container>
             <div className={styles.RowHull}>
               <div className="container__reserve">
                 {/* Дата__и__время */}
                 <div className="reserve__title__subtitle">
-                  <div className="reserve__subtitle__left">Дата / Время</div>
+                  <div className="reserve__subtitle__left__hull">
+                    Дата / Время
+                  </div>
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DemoContainer components={["TimePicker"]}>
                       <DatePicker
@@ -84,7 +76,7 @@ const MainReserve = () => {
                           label: {
                             color: "#fff",
                             fontSize:
-                              "calc(15px + 12 * ((100vw - 320px) / (1920 - 320)))",
+                              "calc(15px + 11 * ((100vw - 320px) / (1920 - 320)));",
                             fontFamily: "Lato",
                             marginLeft: "6px",
                           },
@@ -104,7 +96,7 @@ const MainReserve = () => {
                           label: {
                             color: "#fff",
                             fontSize:
-                              "calc(15px + 12 * ((100vw - 320px) / (1920 - 320)))",
+                              "calc(15px + 11 * ((100vw - 320px) / (1920 - 320)));",
                             fontFamily: "Lato",
                             marginLeft: "6px",
                           },
@@ -187,7 +179,7 @@ const MainReserve = () => {
                 {/* По желанию  */}
                 <div className="reserve__title__subtitle">
                   <div className="reserve__subtitle__left__hull">
-                    По желанию
+                    Комментарий
                   </div>
                   <TextField
                     InputProps={{

@@ -11,8 +11,8 @@ import { TimePicker } from "@mui/x-date-pickers";
 import "../../assets/general-styles/styles.css";
 
 function Taxi() {
-  // const [data, setData] = useState("");
-  // const [time, setTime] = useState("");
+  const [data, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -27,9 +27,14 @@ function Taxi() {
     address: (e) => {
       setAddress(e.target.value);
     },
+    time: (e) => {
+      setTime(`${e["$d"]}`.slice(15, 34));
+    },
+    date: (e) => {
+      setDate(`${e["$d"]}`.slice(0, 15));
+      console.log(`${e["$d"]}`.slice(4, 15));
+    },
   };
-
-  
 
   const style = {
     position: "absolute",
@@ -59,7 +64,7 @@ function Taxi() {
             <div className="taxi__order-block">
               <p className="taxi__order-info">
                 Проблема добраться домой в позднее время? <br />
-                Такси Дали-Хинкали поможет решить вашу проблему
+                Услуга " такси Дали-Хинкали " поможет решить Вашу проблему
               </p>
               <Button
                 className="taxi__order-button"
@@ -114,10 +119,11 @@ function Taxi() {
                         // !Убрать border у data and time
                         slotProps={{ textField: { variant: "standard" } }}
                         sx={{
+                          // fontSize
                           width: "100%",
                         }}
-                        label=""
                         variant="standard"
+                        onChange={handler.date}
                       />
                       <TimePicker
                         // !Убрать border у data and time
@@ -126,6 +132,7 @@ function Taxi() {
                           width: "100%",
                         }}
                         label=""
+                        onChange={handler.time}
                       />
                     </DemoContainer>
                   </LocalizationProvider>

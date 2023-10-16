@@ -47,8 +47,8 @@ export default function Delivery() {
                 src={DeliveryMobile}
                 alt=""
                 style={{
-                  minWidth: "314px",
-                  height: "550.12px",
+                  minWidth: "344px",
+                  // height: "550.12px",
                   zIndex: "2",
                   filter: "drophadow(0px 4px 100px #000)",
                 }}

@@ -15,10 +15,11 @@ export default function Omar() {
         </div>
         <div className={Styles.OmarBtn}>
           <Button
+          className={Styles.buttonOmar}
             sx={{
               borderRadius: "20px",
               background: "#f69049",
-              padding: "24px 85px",
+              padding: "20px 85px",
               fontSize: "calc(15px + 10 * ((100vw - 320px) / (1920 - 320))) ",
               "&:hover": {
                 background: "#ff6900",

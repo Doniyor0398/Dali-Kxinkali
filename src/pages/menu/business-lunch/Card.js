@@ -19,20 +19,22 @@ const Card = ({ elem }) => {
   }
 
   return (
-    <div className={styles.cardSalat} key={elem.id}>
-      <div className="ImgField imgBeverage">
-        <img className="image hoverBeverage" src={elem.src} alt="" />
-      </div>
-      <div className="cardTitle">{elem.title}</div>
-      <div className={styles.BoxWeightSubTitle}>
-        <div className="title">{elem.subtitle}</div>
-        <span className="weight">{elem.weight}</span>
-      </div>
-      <div className="btns">
-        <p className="price">{elem.price}</p>
-        <button className="btn" onClick={() => addToCart()}>
-          + to cart
-        </button>
+    <div className="CardContainer">
+      <div className={styles.cardSalat} key={elem.id}>
+        <div className="ImgField imgBeverage">
+          <img className="image hoverBeverage" src={elem.src} alt="" />
+        </div>
+        <div className="cardTitle">{elem.title}</div>
+        <div className={styles.BoxWeightSubTitle}>
+          <div className="title">{elem.subtitle}</div>
+          <span className="weight">{elem.weight}</span>
+        </div>
+        <div className="btns">
+          <p className="price">{elem.price}.руб</p>
+          <button className="btn" onClick={() => addToCart()}>
+            + В корзину
+          </button>
+        </div>
       </div>
     </div>
   );

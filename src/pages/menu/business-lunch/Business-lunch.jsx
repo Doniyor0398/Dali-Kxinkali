@@ -1,11 +1,31 @@
 import TimeBackgroundLunch from "../../../assets/img/TimeBackgroundLunch.png";
-import Lunch from "./Business-lunch-data";
 import styles from "./Business-lunch.module.css";
 import "../../../assets/general-styles/styles.css";
 import Footer from "../../../components/footer/footer";
 import Card from "./Card";
+import { useEffect, useState } from "react";
+import { categoriesApi } from "../../../api/categories";
 
 export default function Businesslunch() {
+  const [usableBL, setUseableBL] = useState([]);
+
+  useEffect(() => {
+    categoriesApi.getBuisnessLunch().then((data) => {
+      setUseableBL(
+        data.map((el) => {
+          return {
+            id: el.id,
+            src: el.images[0]?.images,
+            title: el.title,
+            subtitle: el.description,
+            weight: el.weight,
+            price: el.price,
+          };
+        })
+      );
+    });
+  }, []);
+
   return (
     <>
       <div
@@ -16,15 +36,17 @@ export default function Businesslunch() {
         }}
       >
         <div className={styles.ContainerLunchTitle}>
-          <div className={styles.LunchTitle}>ПО БУДНЯМ</div>
-          <div className={styles.LunchTime}>с 12:00 до 16:00</div>
+          <div className={styles.LunchTime}>
+            Ежедневно
+            <br />с 12:00 до 16:00
+          </div>
         </div>
       </div>
       <div className="_container">
         <div className={styles.content}>
           <div className={styles.containerCardSalats}>
-            {Lunch.map((elem) => (
-              <Card elem={elem} />
+            {usableBL.map((elem) => (
+              <Card elem={elem} key={elem.id} />
             ))}
           </div>
         </div>

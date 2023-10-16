@@ -1,6 +1,30 @@
-.select::before {
-  color: #fff;
+/* style для select  */
+.custom-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  font-size: 60px;
 }
+
+.custom-select::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+.backgroundBodyReserve {
+  background: #f69049;
+  height: 100%;
+  padding-top: 85px;
+}
+
 .ContainerCenter {
   display: flex;
   justify-content: center;
@@ -17,9 +41,7 @@
   color: #fff;
   border: none;
 }
-.backgroundBodyReserve {
-  background-size: 95% 100% !important;
-}
+
 /*! style Select  */
 select,
 select:focus,
@@ -42,22 +64,46 @@ select:after {
   display: flex;
   background: none;
 }
+.SelectReserveSelectRow input::placeholder {
+  font-size: calc(18px + 18 * ((100vw - 320px) / (1920 - 320)));
+}
 @media (max-width: 1176px) {
   .SelectReserveSelectRow {
     display: block;
   }
 }
 
+.spanReserve {
+  border: none;
+  background: none;
+  color: #fff;
+  font-family: "Lato";
+  font-size: calc(18px + 18 * ((100vw - 320px) / (1920 - 320)));
+  font-weight: 500;
+  padding: 0 0 5px 0;
+  border-bottom: 1px solid black;
+}
 .ReserveOption {
   border: none;
   background: none;
-  font-size: 23px;
   color: #fff;
   font-family: "Lato";
-  font-size: 33.186px;
-  font-style: normal;
+  font-size: calc(18px + 18 * ((100vw - 320px) / (1920 - 320)));
   font-weight: 500;
-  line-height: normal;
+  padding: 0 0 5px 0;
+  border-bottom: 1px solid black;
+  width: 479px;
+}
+@media (max-width: 495px) {
+  .spanReserve {
+    width: 100%;
+  }
+  .ReserveOption {
+    width: 50%;
+  }
+}
+.spanReserve {
+  margin: 0 0 0 30px;
 }
 
 .titleReservePages {

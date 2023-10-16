@@ -12,27 +12,23 @@
   border-color: rgb(234, 223, 223);
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .cardSalat,
 .weight {
   border-radius: 210.5px 210.5px 20px 20px;
-  width: 421px;
+  width: 386px;
 }
 /* !Карточка товара */
 
 .cardSalat {
   background: #eaeaea;
-  margin: 100px 100px 150px;
+  margin: 40px 20px 150px;
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 }
-@media (max-width: 1862px) {
-  .cardSalat {
-    margin: 100px 50px 150px;
-  }
-}
+
 @media (max-width: 921px) {
   .cardSalat {
     margin: 100px 10px 150px;

@@ -1,11 +1,12 @@
 import { experimentalStyled as styled } from "@mui/material/styles";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
+// import Images
 import bannerFist from "../../assets/images/main-banner-1.jpeg";
 import bannerSecond from "../../assets/images/main-banner-2.jpeg";
 import bannerThird from "../../assets/images/main-banner-3.jpeg";
+import addServicesBanner from "../../assets/img/addServicesBanner.jpeg";
+// import styles
 import styles from "./Main.module.css";
 import Banner from "../../components/banner/Banner";
 import MainReserve from "../../components/mainReserve/MainReserve";
@@ -38,6 +39,11 @@ const Main = () => {
           url={"/business-lunch"}
           background={bannerThird}
           title="Бизнес ланч"
+        />
+        <Banner
+          url={"/additionalServices"}
+          background={addServicesBanner}
+          title="Доп услуги"
         />
       </Container>
 
